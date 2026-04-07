@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LabourHire – About</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f6fb; color: #1a1a2e; }
+
+    /* NAV */
+    nav {
+      background: #1e2a4a;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 60px;
+    }
+    .logo { color: #f5a623; font-size: 22px; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: #cdd5e0; text-decoration: none; font-size: 15px; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #fff; font-weight: 600; border-bottom: 2px solid #fff; padding-bottom: 2px; }
+    .btn-login {
+      background: #f5a623; color: #1e2a4a; border: none;
+      padding: 8px 22px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .btn-login:hover { background: #e0951a; }
+
+    /* HERO */
+    .hero {
+      background: #1e2a4a;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 56px 80px 56px 80px; gap: 40px;
+    }
+    .hero-text h1 { color: #fff; font-size: 34px; font-weight: 700; margin-bottom: 18px; }
+    .hero-text p { color: #a8b8d0; font-size: 15px; line-height: 1.7; max-width: 560px; }
+    .hero-img {
+      background: #2a3a60; border-radius: 16px;
+      width: 180px; height: 160px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px;
+    }
+
+    /* STATS */
+    .stats {
+      background: #f5a623;
+      display: flex; justify-content: center; align-items: center;
+      gap: 80px; padding: 36px 48px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { color: #fff; font-size: 32px; font-weight: 700; }
+    .stat-label { color: #fff; font-size: 13px; margin-top: 4px; opacity: 0.9; }
+
+    /* MISSION / VISION / VALUES */
+    .mvv-section { padding: 52px 80px; background: #f4f6fb; }
+    .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .mvv-card {
+      background: #fff; border-radius: 12px;
+      padding: 28px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .mvv-card h3 { font-size: 16px; font-weight: 700; color: #1e2a4a; margin-bottom: 12px; }
+    .mvv-card p { font-size: 14px; color: #4a5568; line-height: 1.7; }
+    .mvv-icon { margin-right: 8px; font-size: 18px; }
+
+    /* TEAM */
+    .team-section { padding: 52px 80px 64px; background: #fff; text-align: center; }
+    .team-section h2 { font-size: 28px; font-weight: 700; color: #1e2a4a; margin-bottom: 40px; }
+    .team-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .team-member { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .avatar {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: #1e2a4a;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 44px;
+    }
+    .team-member h4 { font-size: 15px; font-weight: 700; color: #1e2a4a; }
+    .team-member span { font-size: 13px; color: #718096; }
+
+    /* FOOTER */
+    footer {
+      background: #1e2a4a; color: #a8b8d0;
+      text-align: center; padding: 20px; font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; padding: 40px 24px; }
+      .hero-img { width: 120px; height: 110px; font-size: 52px; }
+      .stats { gap: 32px; }
+      .mvv-section, .team-section { padding: 40px 24px; }
+      .mvv-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">LabourHire</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="Find_Labour.html">Find Labour</a></li>
+    <li><a href="Services.html">Services</a></li>
+    <li><a href="#" class="active">About</a></li>
+    <li><a href="Contact.html">Contact</a></li>
+    <li><button class="btn-login">Login</button></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>About LabourHire</h1>
+    <p>We are India's trusted platform connecting skilled labourers with people who need quality work done. Founded in 2026, we have helped thousands of households and businesses find reliable, verified workers quickly and affordably.</p>
+  </div>
+  <div class="hero-img">🏢</div>
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <div class="stat-num">10,000+</div>
+    <div class="stat-label">Workers Registered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">50,000+</div>
+    <div class="stat-label">Jobs Completed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100+</div>
+    <div class="stat-label">Cities Covered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4.8★</div>
+    <div class="stat-label">Average Rating</div>
+  </div>
+</section>
+
+<section class="mvv-section">
+  <div class="mvv-grid">
+    <div class="mvv-card">
+      <h3><span class="mvv-icon">🎯</span>Our Mission</h3>
+      <p>To empower skilled workers with fair opportunities while giving clients a safe, reliable and affordable way to hire quality labour across India.</p>
+    </div>
+    <div class="mvv-card">
+      <h3><span class="mvv-icon">🔮</span>Our Vision</h3>
+      <p>To become India's #1 labour hiring platform — digital, inclusive and accessible — bridging the gap between skilled workers and those who need them.</p>
+    </div>
+    <div class="mvv-card">
+      <h3><span class="mvv-icon">💎</span>Our Values</h3>
+      <p>Transparency, trust, fair wages, and quality work. We believe every worker deserves dignity and every client deserves reliability.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <h2>Meet Our Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="avatar">👨‍💼</div>
+      <h4>Aarush Kashyap</h4>
+      <span>Founder &amp; CEO</span>
+    </div>
+    <div class="team-member">
+      <div class="avatar">👩‍💼</div>
+      <h4>Aarush Patel</h4>
+      <span>Head of Operations</span>
+    </div>
+    <div class="team-member">
+      <div class="avatar">👨‍💻</div>
+      <h4>Aarush Arora</h4>
+      <span>Lead Developer</span>
+    </div>
+    <div class="team-member">
+      <div class="avatar">👩‍🎨</div>
+      <h4>Aarush Trivedi</h4>
+      <span>UI/UX Designer</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 LabourHire Website | All Rights Reserved
+</footer>
+
+</body>
+</html>

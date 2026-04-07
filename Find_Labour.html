@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LabourHire – Find Labour</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2f5e;
+      --navy-d: #152549;
+      --navy-l: #243870;
+      --gold:   #f5a623;
+      --gold-l: #fbb93a;
+      --slate:  #f2f4f8;
+      --white:  #ffffff;
+      --text:   #1e2a45;
+      --muted:  #6b7a99;
+      --border: #dde3f0;
+      --radius: 10px;
+      --shadow: 0 4px 20px rgba(26,47,94,.10);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--slate);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ───────────────────────────── */
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
+    }
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active {
+      color: #fff;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,.35);
+      padding: .3rem .85rem;
+      border-radius: 6px;
+    }
+    .btn-login {
+      background: var(--gold) !important;
+      color: var(--navy-d) !important;
+      font-weight: 600 !important;
+      padding: .38rem 1.1rem !important;
+      border-radius: 6px;
+      border: none !important;
+    }
+    .btn-login:hover { background: var(--gold-l) !important; }
+
+    /* ── HERO SEARCH ───────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 2.8rem 1rem 2.6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(245,166,35,.12), transparent 70%);
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.4rem;
+      position: relative;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .search-bar select,
+    .search-bar input {
+      height: 46px;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--text);
+      outline: none;
+      background: #fff;
+    }
+    .search-bar select { width: 180px; cursor: pointer; }
+    .search-bar input  { width: 280px; }
+    .search-bar input::placeholder { color: #b0bac8; }
+    .btn-search {
+      height: 46px;
+      padding: 0 1.6rem;
+      background: var(--gold);
+      color: var(--navy-d);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: .92rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-search:hover { background: var(--gold-l); }
+
+    /* ── GRID ──────────────────────────── */
+    .grid-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+    .worker-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.1rem;
+    }
+
+    /* ── WORKER CARD ───────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26,47,94,.14);
+    }
+
+    .card-thumb {
+      background: var(--navy);
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+    }
+
+    .card-body {
+      padding: .85rem .9rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-name {
+      font-family: 'Sora', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .2rem;
+    }
+    .card-role {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: .45rem;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: .45rem;
+    }
+    .stars { color: var(--gold); letter-spacing: -1px; font-size: .78rem; }
+    .card-rate {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: .75rem;
+    }
+    .btn-hire {
+      width: 100%;
+      padding: .52rem;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-family: 'Sora', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: auto;
+      transition: background .2s;
+    }
+    .btn-hire:hover { background: var(--navy-l); }
+
+    /* ── FOOTER ────────────────────────── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 1rem;
+      font-size: .8rem;
+    }
+
+    /* ── RESPONSIVE ────────────────────── */
+    @media (max-width: 1100px) { .worker-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 720px)  { .worker-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px)  { .worker-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">LabourHire</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" class="active">Find Labour</a></li>
+    <li><a href="Services.html">Services</a></li>
+    <li><a href="About.html">About</a></li>
+    <li><a href="Contact.html">Contact</a></li>
+    <li><a href="#" class="btn-login">Login</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Find the Right Worker</h1>
+  <div class="search-bar">
+    <select id="categorySelect">
+      <option>Plumber</option>
+      <option>Electrician</option>
+      <option>Construction Worker</option>
+      <option>House Cleaning</option>
+      <option>Painter</option>
+      <option>Carpenter</option>
+    </select>
+    <input type="text" id="locationInput" placeholder="Enter city / location"/>
+    <button class="btn-search" onclick="filterWorkers()">Search</button>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="grid-section">
+  <div class="worker-grid" id="workerGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>© 2026 LabourHire Website | All Rights Reserved</footer>
+
+<script>
+  const workers = [
+    { name: "Ramesh Kumar",   role: "Construction Worker", stars: 5, city: "Jaipur",  rate: "₹650/day",     icon: "👷" },
+    { name: "Suresh Yadav",   role: "Electrician",         stars: 4, city: "Jaipur",  rate: "₹550/visit",   icon: "⚡" },
+    { name: "Mohan Lal",      role: "Plumber",             stars: 5, city: "Delhi",   rate: "₹500/visit",   icon: "🔧" },
+    { name: "Kavita Devi",    role: "House Cleaning",      stars: 4, city: "Mumbai",  rate: "₹400/session", icon: "🧹" },
+    { name: "Anil Painter",   role: "Painter",             stars: 5, city: "Jaipur",  rate: "₹400/day",     icon: "🎨" },
+    { name: "Vikram Singh",   role: "Carpenter",           stars: 3, city: "Delhi",   rate: "₹600/day",     icon: "🪚" },
+    { name: "Deepak Meena",   role: "Construction Worker", stars: 5, city: "Mumbai",  rate: "₹700/day",     icon: "👷" },
+    { name: "Sita Bai",       role: "House Cleaning",      stars: 5, city: "Jaipur",  rate: "₹380/session", icon: "🧹" },
+    { name: "Raju Mistri",    role: "Plumber",             stars: 4, city: "Jaipur",  rate: "₹480/visit",   icon: "🔧" },
+    { name: "Pradeep Wires",  role: "Electrician",         stars: 5, city: "Mumbai",  rate: "₹600/visit",   icon: "⚡" },
+    { name: "Gopal Das",      role: "Carpenter",           stars: 5, city: "Delhi",   rate: "₹580/day",     icon: "🪚" },
+    { name: "Lakshmi P.",     role: "Painter",             stars: 4, city: "Mumbai",  rate: "₹370/day",     icon: "🎨" },
+  ];
+
+  function starHTML(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function renderGrid(list) {
+    const grid = document.getElementById('workerGrid');
+    if (!list.length) {
+      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0">No workers found for your search.</p>';
+      return;
+    }
+    grid.innerHTML = list.map(w => `
+      <div class="card">
+        <div class="card-thumb">${w.icon}</div>
+        <div class="card-body">
+          <div class="card-name">${w.name}</div>
+          <div class="card-role">${w.role}</div>
+          <div class="card-meta">
+            <span class="stars">${starHTML(w.stars)}</span>
+            <span>${w.city}</span>
+          </div>
+          <div class="card-rate">${w.rate}</div>
+          <button class="btn-hire">Hire Now</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterWorkers() {
+    const cat = document.getElementById('categorySelect').value.toLowerCase();
+    const loc = document.getElementById('locationInput').value.trim().toLowerCase();
+    const filtered = workers.filter(w => {
+      const matchCat = w.role.toLowerCase().includes(cat);
+      const matchLoc = !loc || w.city.toLowerCase().includes(loc);
+      return matchCat && matchLoc;
+    });
+    renderGrid(filtered);
+  }
+
+  // Initial render
+  renderGrid(workers);
+</script>
+
+</body>
+</html>

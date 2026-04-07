@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LabourHire – Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1a2f5e;
+      --navy-d:  #152549;
+      --navy-l:  #243870;
+      --gold:    #f5a623;
+      --gold-l:  #fbb93a;
+      --slate:   #f2f4f8;
+      --white:   #ffffff;
+      --text:    #1e2a45;
+      --muted:   #6b7a99;
+      --border:  #dde3f0;
+      --radius:  10px;
+      --shadow:  0 4px 24px rgba(26,47,94,.10);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      min-height: 100vh;
+    }
+
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+    }
+
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--gold);
+      letter-spacing: -.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; }
+
+    .nav-links a.active {
+      font-weight: 500;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2px;
+    }
+
+    .btn-login {
+      background: var(--gold);
+      color: var(--navy-d) !important;
+      font-weight: 600 !important;
+      padding: .38rem 1.1rem;
+      border-radius: 6px;
+      transition: background .2s !important;
+    }
+    .btn-login:hover { background: var(--gold-l) !important; }
+
+    .hero {
+      background: var(--navy);
+      text-align: center;
+      padding: 3.5rem 1rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(245,166,35,.13) 0%, transparent 70%);
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.5px;
+      position: relative;
+    }
+    .hero p {
+      margin-top: .55rem;
+      color: rgba(255,255,255,.68);
+      font-size: 1rem;
+      position: relative;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.55fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .info-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .info-items { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-icon svg { width: 18px; height: 18px; }
+
+    .info-body { padding-top: 2px; }
+    .info-body strong {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .info-body span {
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .info-body a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .info-body a:hover { text-decoration: underline; }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .form-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.4rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: .35rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: .6rem .85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: #b0bac8; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26,47,94,.09);
+    }
+
+    .select-wrap { position: relative; }
+    .select-wrap select { padding-right: 2.2rem; cursor: pointer; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: .85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--muted);
+      pointer-events: none;
+    }
+
+    textarea { resize: vertical; min-height: 110px; }
+
+    .btn-send {
+      width: 100%;
+      padding: .72rem 1rem;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Sora', sans-serif;
+      font-size: .92rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .3px;
+      transition: background .2s, transform .1s;
+      margin-top: .4rem;
+    }
+    .btn-send:hover  { background: var(--navy-l); }
+    .btn-send:active { transform: scale(.985); }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: #1a8a4a;
+      font-weight: 500;
+      font-size: .95rem;
+    }
+    .success-msg svg { display: block; margin: 0 auto .6rem; }
+
+    .map-strip {
+      background: var(--slate);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .map-strip .map-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      margin-bottom: .35rem;
+    }
+    .map-strip .map-title svg { width: 16px; height: 16px; }
+    .map-strip p { font-size: .85rem; color: var(--muted); }
+
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      padding: 1rem;
+      font-size: .8rem;
+    }
+
+    @media (max-width: 680px) {
+      main { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">LabourHire</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="Find_Labour.html">Find Labour</a></li>
+    <li><a href="Services.html">Services</a></li>
+    <li><a href="About.html">About</a></li>
+    <li><a href="#" class="active">Contact</a></li>
+    <li><a href="Project_Login_Page.html" target="_blank" class="btn-login">Login</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Contact Us</h1>
+  <p>We're here to help. Reach out to us anytime.</p>
+</section>
+
+<main>
+  <div class="info-panel">
+    <p class="info-title">Get In Touch</p>
+    <div class="info-items">
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="info-body">
+          <strong>Address</strong>
+          <span>Manipal University, Bagru, Jaipur,<br>Rajasthan 303007</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="info-body">
+          <strong>Phone</strong>
+          <span><a href="tel:+919876543210">+91 12345 67890</a></span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="info-body">
+          <strong>Email</strong>
+          <span><a href="mailto:support@labourhire.in">support@labourhire.in</a></span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="info-body">
+          <strong>Working Hours</strong>
+          <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-card">
+    <p class="form-title">Send a Message</p>
+    <div id="contactForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="Your full name"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <div class="select-wrap">
+          <select id="subject">
+            <option>General Inquiry</option>
+            <option>Hire Labour</option>
+            <option>Service Support</option>
+            <option>Partnership</option>
+            <option>Complaint</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Write your message here…"></textarea>
+      </div>
+      <button class="btn-send" onclick="sendMessage()">Send Message</button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a8a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      Message sent! We'll get back to you soon.
+    </div>
+  </div>
+</main>
+
+<section class="map-strip">
+  <p class="map-title">
+    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+    Find Us On Map
+  </p>
+  <p>Manipal University, Bagru, Jaipur, Rajasthan 303007</p>
+</section>
+
+<footer>
+  © 2026 LabourHire Website | All Rights Reserved
+</footer>
+
+<script>
+  function sendMessage() {
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in Name, Email, and Message before sending.');
+      return;
+    }
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
